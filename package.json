@@ -1,6 +1,6 @@
 {
     "name": "smart-text-ellipsis",
-    "version": "0.0.4",
+    "version": "2.0.1",
     "description": "Hide and display long text.",
     "author": "wuzhanggui",
     "license": "MIT",
@@ -23,6 +23,14 @@
     "main": "dist/smart-text-ellipsis.cjs.js",
     "module": "dist/smart-text-ellipsis.esm.js",
     "style": "dist/smart-text-ellipsis.css",
+    "types": "dict/smart-text-ellipsis.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/smart-text-ellipsis.d.ts",
+            "import": "./dist/smart-text-ellipsis.esm.js",
+            "require": "./dist/smart-text-ellipsis.cjs.js"
+        }
+    },
     "files": [
         "dist",
         "src"

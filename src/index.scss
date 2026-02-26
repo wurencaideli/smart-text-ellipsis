@@ -1,51 +1,57 @@
-.smart-text-ellipsis-more {
-    display: -webkit-box;
-    -webkit-line-clamp: var(--max-lines);
-    -webkit-box-orient: vertical;
-    display: -moz-box; /* 旧 Firefox 私有（已废弃）可省略 */
-    line-clamp: var(--max-lines); /* 标准属性 */
-    box-orient: vertical;
-    overflow: hidden;
-}
-.smart-text-ellipsis-one {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.is-ellipsis {
-    > .smart-text-ellipsis-expand {
-        display: initial;
-    }
-    > .smart-text-ellipsis-placeholder {
-        display: initial;
-    }
-}
-.is-exceeded-max-line {
-    > .smart-text-ellipsis-collapse {
-        display: flex;
-    }
-}
-.smart-text-ellipsis-expand {
-    display: none;
-    float: right;
-    clear: both;
-    cursor: pointer;
-    color: #1178d9;
+.smart-text-ellipsis {
     position: relative;
-    z-index: 2;
-}
-.smart-text-ellipsis-collapse {
-    display: none;
-    flex-direction: row;
-    justify-content: flex-end;
-    cursor: pointer;
-    color: #1178d9;
-    position: relative;
-    z-index: 2;
-}
-.smart-text-ellipsis-placeholder {
-    display: none;
-    float: right;
-    width: 0;
-    pointer-events: none;
+
+    &.is-ellipsis {
+        .smart-text-ellipsis-expand {
+            opacity: 1;
+            pointer-events: initial;
+        }
+    }
+
+    &.is-exceeded-max-line {
+        .smart-text-ellipsis-collapse {
+            opacity: 1;
+            pointer-events: initial;
+            position: initial;
+        }
+    }
+
+    .smart-text-ellipsis-more {
+        display: -webkit-box;
+        -webkit-line-clamp: var(--max-lines);
+        -webkit-box-orient: vertical;
+        display: -moz-box;
+        line-clamp: var(--max-lines);
+        box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .smart-text-ellipsis-one {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .smart-text-ellipsis-expand {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .smart-text-ellipsis-collapse {
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+    }
+
+    .smart-text-ellipsis-text-v {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        pointer-events: none;
+    }
 }
