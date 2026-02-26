@@ -3,22 +3,27 @@ name: Publish to npm
 on:
   push:
     tags:
-      - "v*"          # 推送形如 v1.0.0 的 tag 时触发
-  workflow_dispatch:   # 允许在 Actions 页面手动触发
+      - "v*"
+  workflow_dispatch:
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
 
-      - run: npm publish
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Publish to npm
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
