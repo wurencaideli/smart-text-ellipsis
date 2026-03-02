@@ -84,15 +84,14 @@ export class SmartTextEllipsis {
         if (this.isOpen) {
             removeElementClass(textEl, 'smart-text-ellipsis-more');
             removeElementClass(textEl, 'smart-text-ellipsis-one');
-            // 如果行数超过了，显示收缩按钮
-            if (this.#isEllipsisActive()) {
-                removeElementClass(targetEl, 'is-ellipsis');
+        }
+        removeElementClass(targetEl, 'is-ellipsis');
+        removeElementClass(targetEl, 'is-exceeded-max-line');
+        // 如果行数超过了，显示收缩按钮
+        if (this.#isEllipsisActive()) {
+            if (this.isOpen) {
                 addElementClass(targetEl, 'is-exceeded-max-line');
-            }
-        } else {
-            // 如果字体省略了，显示展开按钮
-            if (this.#isEllipsisActive()) {
-                removeElementClass(targetEl, 'is-exceeded-max-line');
+            } else {
                 addElementClass(targetEl, 'is-ellipsis');
             }
         }
